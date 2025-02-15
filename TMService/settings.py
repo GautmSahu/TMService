@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'TMService.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-print('os.environ.get("DB_NAME")' ,os.environ.get("DB_NAME"))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -129,7 +129,10 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -143,7 +146,7 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle',  # Throttle for authenticated users
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '5/minute',  # Allow 5 requests per minute for unauthenticated users
+        'anon': '5/minute',     # Allow 5 requests per minute for unauthenticated users
         'user': '10/minute',    # Allow 10 requests per minute for authenticated users
     }
 }
@@ -159,6 +162,10 @@ SIMPLE_JWT = {
 }
 
 
+LOGS_DIR = os.path.join(MEDIA_ROOT, 'files')
+if not os.path.exists(LOGS_DIR):
+    os.makedirs(LOGS_DIR)
+    
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -172,7 +179,7 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': 'task_updates.log',
+            'filename': 'media/files/task_updates.log',
             'formatter': 'verbose',
         },
     },
