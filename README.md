@@ -153,6 +153,14 @@ The Task Management Microservice is a modular system designed to handle task ope
         - cd TMService/
     - Install required packages
         - pip install -r requirements.txt
+    - Setup postgres and create database
+        - open postgres shell and paste below cmds
+            - CREATE DATABASE db_name; 
+            - CREATE USER db_user WITH PASSWORD 'secure_password';
+            - ALTER ROLE db_user SET client_encoding TO 'utf8'; 
+            - ALTER ROLE db_user SET default_transaction_isolation TO 'read committed'; 
+            - ALTER ROLE db_user SET timezone TO 'UTC'; 
+            - GRANT ALL PRIVILEGES ON DATABASE db_name TO db_user; 
     - Open .env file and do the necessary changes like DB configuration etc.
     - Export the environment variables
         - source .env
