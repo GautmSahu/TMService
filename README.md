@@ -140,4 +140,34 @@ The Task Management Microservice is a modular system designed to handle task ope
 6. Live Links
     - [Website URL](https://tmservice.onrender.com/)
     - [Github Repo](https://github.com/GautmSahu/TMService)
-    - [Postman Collection]()
+    - [Postman Collection and API Documentation](https://drive.google.com/file/d/1fXTx3e6_p3qnoqSauvH8TkOWzgaEGf-C/view?usp=sharing)
+
+# Note
+    - Used free domain server from render.com for hosting, so for 1st time the api/web may respond late and may take upto 1 minute.
+    - As its a third party and free server, i have not setup the cronjob for task notification but it will run perfectly on local system.
+
+# Steps for setting up on local system (ubuntu)
+    - Clone git repo
+        - git clone https://github.com/GautmSahu/TMService.git
+    - Create virtual environment(python=3.11)
+        - python3 -m venv venv
+    - Activate the environment
+        - . venv/bin/activate
+    - Go to project path
+        - cd TMService/
+    - Install required packages
+        - pip install -r requirements.txt
+    - Open .env file and do the necessary changes like DB configuration etc.
+    - Export the environment variables
+        - source .env
+    - Run migrations
+        - python manage.py makemigrations
+        - python manage.py migrate
+    - Seup cronjob for task notification
+        - crontab -e
+            - 0 8 * * * /path/to/your/venv/bin/python /path/to/your/project/manage.py check_due_tasks
+            - save and exit
+    - Run the django server
+        - python manage.py runserver
+    - That's it.
+
