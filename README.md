@@ -142,11 +142,7 @@ The Task Management Microservice is a modular system designed to handle task ope
     - [Github Repo](https://github.com/GautmSahu/TMService)
     - [Postman Collection and API Documentation](https://drive.google.com/file/d/1fXTx3e6_p3qnoqSauvH8TkOWzgaEGf-C/view?usp=sharing)
 
-# Note
-    - Used free domain server from render.com for hosting, so for 1st time the api/web may respond late and may take upto 1 minute.
-    - As its a third party and free server, i have not setup the cronjob for task notification but it will run perfectly on local system.
-
-# Steps for setting up on local system (ubuntu)
+7. Steps for setting up on local system (ubuntu)
     - Clone git repo
         - git clone https://github.com/GautmSahu/TMService.git
     - Create virtual environment(python=3.11)
@@ -171,3 +167,6 @@ The Task Management Microservice is a modular system designed to handle task ope
         - python manage.py runserver
     - That's it.
 
+# Note
+    - Used free domain server from render.com for hosting, so for 1st time the api/web may respond late and may take upto 1 minute.
+    - As its a third party and free server, i have not setup the cronjob for task notification but it will run perfectly on local system.
