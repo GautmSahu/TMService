@@ -80,29 +80,17 @@ WSGI_APPLICATION = 'TMService.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'tm_service_db',
-            'USER': 'tm_user',
-            'PASSWORD': 'tm@123$',
-            'HOST': 'localhost',
-            'PORT': '',
-        }
+print('os.environ.get("DB_NAME")' ,os.environ.get("DB_NAME"))
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get("DATABASE_NAME"),
+        'USER': os.environ.get("DATABASE_USER"),
+        'PASSWORD': os.environ.get("DATABASE_PASSWORD"),
+        'HOST': os.environ.get("DATABASE_HOST"),
+        'PORT': os.environ.get("DATABASE_PORT"),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ.get("DB_NAME"),
-            'USER': os.environ.get("DB_USER"),
-            'PASSWORD': os.environ.get("DB_PASSWORD"),
-            'HOST': os.environ.get("DB_HOST"),
-            'PORT': '5432',
-        }
-    }
+}
 
 
 # Password validation
