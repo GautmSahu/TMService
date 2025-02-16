@@ -173,6 +173,7 @@ The Task Management Microservice is a modular system designed to handle task ope
             - save and exit
     - Run the django server
         - python manage.py runserver
+        - Check the api's with the help of postman collection providedd above
     - That's it.
 
 # Note
